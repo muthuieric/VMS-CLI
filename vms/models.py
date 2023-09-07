@@ -8,7 +8,6 @@ engine = create_engine('sqlite:///vms.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
 Base = declarative_base()
 
 # Define your models
@@ -20,12 +19,14 @@ class Visitor(Base):
     email = Column(String)
     visits = relationship('Visit', back_populates='visitor')
 
+
 class Office(Base):
     __tablename__ = 'office'
 
     office_id = Column(Integer, primary_key=True)
     office_name = Column(String)
     visits = relationship('Visit', back_populates='office')
+
 
 class Visit(Base):
     __tablename__ = 'visits'
