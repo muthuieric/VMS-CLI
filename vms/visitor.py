@@ -34,6 +34,7 @@ def list():
     for visitor in visitors:
         click.echo(f"ID: {visitor.visitor_id}, Name: {visitor.full_name}, Email: {visitor.email}")
 
+
 @visitor.command()
 @click.argument('visitor_id', type=int)
 @click.option('--name', prompt='Enter new name', help='New visitor name')
@@ -48,6 +49,7 @@ def update(visitor_id, name, email):
         click.echo(f"Visitor with ID {visitor_id} updated.")
     else:
         click.echo(f"Visitor with ID {visitor_id} not found.")
+
 
 @visitor.command()
 @click.argument('visitor_id', type=int)

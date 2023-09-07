@@ -23,6 +23,7 @@ def list():
     for office in offices:
         click.echo(f"ID: {office.office_id}, Name: {office.office_name}")
 
+
 @office.command()
 @click.argument('office_id', type=int)
 @click.option('--new_name', prompt='Enter new name', help='New office name')
@@ -35,6 +36,7 @@ def update(office_id, new_name):
         click.echo(f"Office with ID {office_id} updated.")
     else:
         click.echo(f"Office with ID {office_id} not found.")
+
 
 @office.command()
 @click.argument('office_id', type=int, required=True)
