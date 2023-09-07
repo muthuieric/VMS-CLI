@@ -60,3 +60,24 @@ def delete(visit_id):
         click.echo(f"Visit with ID {visit_id} deleted.")
     else:
         click.echo(f"Visit with ID {visit_id} not found.")
+
+
+@visits.command()
+@click.argument('visit_id', type=int)
+def search(visit_id):
+    """Search for a visit by ID using binary search."""
+    visits = session.query(Visit).all()
+    
+    # Binary search to find the visit by ID
+    left, right = 0, len(visits) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if visits[mid].visit_id == visit_id:
+            click.echo(f"Visit found - ID: {visits[mid].visit_id}, Visitor ID: {visits[mid].visitor_id}, Office ID: {visits[mid].office_id}")
+            return
+        elif visits[mid].visit_id < visit_id:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    click.echo(f"Visit with ID {visit_id} not found.")
