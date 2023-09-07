@@ -1,10 +1,17 @@
-
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey
+from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
+engine = create_engine('sqlite:///vms.db')
 
+Session = sessionmaker(bind=engine)
+session = Session()
+
+
+Base = declarative_base()
+
+# Define your models
 class Visitor(Base):
     __tablename__ = 'visitor'
 
@@ -30,3 +37,5 @@ class Visit(Base):
     visit_date = Column(Date)
     visitor = relationship('Visitor', back_populates='visits')
     office = relationship('Office', back_populates='visits')
+
+Base.metadata.create_all(engine)

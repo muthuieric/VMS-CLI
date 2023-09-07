@@ -1,6 +1,6 @@
-# cli.py
 import click
-from db import init_db, Session
+from models import init_db, Session
+
 
 @click.command()
 def initdb():
