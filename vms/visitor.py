@@ -12,7 +12,7 @@ def visitor():
 @visitor.command()
 @click.option('--name', prompt='Enter name', help='Visitor name')
 @click.option('--email', prompt='Enter email', help='Visitor email')
-def create(name, email):
+def add(name, email):
     """Add a visitor."""
     if not re.match(email_pattern, email):
         click.echo("Invalid email format. Please enter a valid email address.")
