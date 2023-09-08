@@ -82,7 +82,7 @@ def search(visit_id):
     while left <= right:
         mid = (left + right) // 2
         if visits[mid].visit_id == visit_id:
-            click.echo(f"Visit found - ID: {visits[mid].visit_id}, Visitor ID: {visits[mid].visitor_id}, Office ID: {visits[mid].office_id}")
+            click.echo(f"Visit found - ID: {visits[mid].visit_id}, Visitor ID: {visits[mid].visitor_id}, Office ID: {visits[mid].office_id},Person visited: {visits[mid].person_visited}")
             return
         elif visits[mid].visit_id < visit_id:
             left = mid + 1
